@@ -214,6 +214,67 @@ button {
   color: var(--ink-muted);
 }
 
+.panel h3 {
+  margin: 16px 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.status {
+  margin: 12px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.harmonies {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+@media (max-width: 640px) {
+  .harmonies {
+    grid-template-columns: 1fr;
+  }
+}
+
+.swatches {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 8px;
+}
+
+.swatches.scale {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.swatch {
+  width: 100%;
+  min-height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 8px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+}
+
+.swatch.is-base {
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+@media (max-width: 480px) {
+  .swatches.scale {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .foot {
   color: var(--ink-subtle);
   font-size: 13px;
