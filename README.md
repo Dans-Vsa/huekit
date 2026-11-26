@@ -7,7 +7,9 @@ A small, fast color toolkit that runs entirely in your browser: check WCAG contr
 - [x] Parse and convert hex, `rgb()` and `hsl()` colors
 - [x] WCAG 2.x contrast checker (AA / AAA, normal and large text) with live preview
 - [x] One-click "closest passing text color" suggestion
-- [ ] Palette generator: complementary, analogous, triadic and 50–900 shade scales
+- [x] Palette generator: complementary, analogous, triadic and split-complementary harmonies
+- [x] 50–900 shade scale that keeps your base color unchanged
+- [x] Click any swatch to copy its hex value
 - [ ] Image palette extractor (canvas + k-means)
 - [ ] Export to CSS variables, Tailwind config and JSON; saved palettes
 - [ ] Accessibility polish, CI, v1.0.0
@@ -31,7 +33,9 @@ npm run lint
 ```
 src/
   lib/color.ts          # parsing, conversion, WCAG math (pure functions)
-  components/           # ColorField, ContrastChecker
+  lib/harmony.ts        # hue rotation and color harmony schemes
+  lib/shades.ts         # 50-900 lightness scale
+  components/           # ColorField, ContrastChecker, PaletteGenerator, Swatch
   App.tsx, index.css
 ```
 
