@@ -1,4 +1,5 @@
 import { ContrastChecker } from './components/ContrastChecker'
+import { PaletteGenerator } from './components/PaletteGenerator'
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       </header>
       <main>
         <ContrastChecker />
+        <PaletteGenerator />
       </main>
       <footer className="foot">Runs entirely in your browser. No data leaves this page.</footer>
     </div>
