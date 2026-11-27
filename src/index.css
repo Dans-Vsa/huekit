@@ -275,6 +275,83 @@ button {
   }
 }
 
+.export {
+  margin-top: 20px;
+  border-top: 1px solid var(--hairline);
+  padding-top: 16px;
+}
+
+.export-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.export-controls > div {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.export-controls label {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.export-controls input[type='text'],
+.export-controls select,
+.export-controls input[type='file'],
+.export-controls input[type='range'] {
+  width: 100%;
+}
+
+select {
+  background: var(--surface-2);
+  color: var(--ink);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 6px;
+  padding: 9px 10px;
+  font: inherit;
+}
+
+input[type='file'] {
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 14px;
+}
+
+input[type='range'] {
+  accent-color: var(--primary);
+}
+
+.code {
+  margin: 12px 0 0;
+  max-height: 240px;
+  overflow: auto;
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 12px;
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.saved + .saved {
+  border-top: 1px solid var(--hairline);
+  margin-top: 16px;
+}
+
+.saved h3 {
+  overflow-wrap: anywhere;
+}
+
 .foot {
   color: var(--ink-subtle);
   font-size: 13px;

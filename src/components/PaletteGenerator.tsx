@@ -1,27 +1,26 @@
 import { useState } from 'react'
+import { useCopy } from '../hooks/useCopy'
 import { parseColor, rgbToHsl } from '../lib/color'
+import type { PaletteColor } from '../lib/export'
 import { harmonies } from '../lib/harmony'
 import { shadeScale } from '../lib/shades'
 import { ColorField } from './ColorField'
+import { ExportPanel } from './ExportPanel'
 import { Swatch } from './Swatch'
 
-export function PaletteGenerator() {
-  const [base, setBase] = useState('#5e6ad2')
-  const [status, setStatus] = useState('')
-  const rgb = parseColor(base)
+interface Props {
+  onSave?: (name: string, colors: PaletteColor[]) => boolean
+}
 
-  const copy = async (hex: string) => {
-    try {
-      await navigator.clipboard.writeText(hex)
-      setStatus(`Copied ${hex}`)
-    } catch {
-      setStatus(`Could not copy. Select it manually: ${hex}`)
-    }
-  }
+export function PaletteGenerator({ onSave }: Props) {
+  const [base, setBase] = useState('#5e6ad2')
+  const { status, copy, reset } = useCopy()
+  const rgb = parseColor(base)
+  const shades = rgb ? shadeScale(rgb) : []
 
   const changeBase = (value: string) => {
     setBase(value)
-    setStatus('')
+    reset()
   }
 
   return (
@@ -51,7 +50,7 @@ export function PaletteGenerator() {
           </div>
           <h3 id="shades-title">Shade scale</h3>
           <ul className="swatches scale" aria-labelledby="shades-title">
-            {shadeScale(rgb).map((shade) => (
+            {shades.map((shade) => (
               <Swatch
                 key={shade.step}
                 hex={shade.hex}
@@ -61,6 +60,11 @@ export function PaletteGenerator() {
               />
             ))}
           </ul>
+          <ExportPanel
+            colors={shades.map((s) => ({ label: String(s.step), hex: s.hex }))}
+            defaultName="brand"
+            onSave={onSave}
+          />
         </>
       ) : (
         <p className="muted">Enter a valid base color to generate a palette.</p>

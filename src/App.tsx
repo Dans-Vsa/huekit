@@ -1,7 +1,12 @@
 import { ContrastChecker } from './components/ContrastChecker'
+import { ImageExtractor } from './components/ImageExtractor'
 import { PaletteGenerator } from './components/PaletteGenerator'
+import { SavedPalettes } from './components/SavedPalettes'
+import { useSavedPalettes } from './hooks/useSavedPalettes'
 
 export default function App() {
+  const { palettes, save, remove } = useSavedPalettes()
+
   return (
     <div className="shell">
       <header className="top">
@@ -10,7 +15,9 @@ export default function App() {
       </header>
       <main>
         <ContrastChecker />
-        <PaletteGenerator />
+        <PaletteGenerator onSave={save} />
+        <ImageExtractor onSave={save} />
+        <SavedPalettes palettes={palettes} onRemove={remove} />
       </main>
       <footer className="foot">Runs entirely in your browser. No data leaves this page.</footer>
     </div>
