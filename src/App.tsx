@@ -9,11 +9,14 @@ export default function App() {
 
   return (
     <div className="shell">
+      <a className="skip" href="#content">
+        Skip to content
+      </a>
       <header className="top">
         <h1>huekit</h1>
         <p>Check contrast, build palettes and export design tokens.</p>
       </header>
-      <main>
+      <main id="content" tabIndex={-1}>
         <ContrastChecker />
         <PaletteGenerator onSave={save} />
         <ImageExtractor onSave={save} />
