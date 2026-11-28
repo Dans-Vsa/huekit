@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useCopy } from '../hooks/useCopy'
 import type { SavedPalette } from '../lib/storage'
 import { ExportPanel } from './ExportPanel'
@@ -12,10 +12,11 @@ interface Props {
 export function SavedPalettes({ palettes, onRemove }: Props) {
   const [openId, setOpenId] = useState<string | null>(null)
   const { status, copy } = useCopy()
+  const title = useRef<HTMLHeadingElement>(null)
 
   return (
     <section aria-labelledby="saved-title" className="panel">
-      <h2 id="saved-title">Saved palettes</h2>
+      <h2 id="saved-title" ref={title} tabIndex={-1}>Saved palettes</h2>
       {palettes.length === 0 && (
         <p className="muted">Nothing saved yet. Palettes are stored only in this browser.</p>
       )}
@@ -46,7 +47,10 @@ export function SavedPalettes({ palettes, onRemove }: Props) {
                 type="button"
                 className="ghost"
                 aria-label={`Delete ${palette.name}`}
-                onClick={() => onRemove(palette.id)}
+                onClick={() => {
+                  onRemove(palette.id)
+                  title.current?.focus() // the focused button is about to disappear
+                }}
               >
                 Delete
               </button>

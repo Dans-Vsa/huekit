@@ -47,5 +47,6 @@ describe('export and saved palettes', () => {
     await user.click(screen.getByRole('button', { name: 'Delete Ocean' }))
     expect(screen.getByText(/Nothing saved yet/)).toBeInTheDocument()
     expect(loadPalettes()).toHaveLength(0)
+    expect(screen.getByRole('heading', { name: 'Saved palettes' })).toHaveFocus()
   })
 })
