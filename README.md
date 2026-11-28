@@ -1,5 +1,7 @@
 # huekit
 
+[![CI](https://github.com/Dans-Vsa/huekit/actions/workflows/ci.yml/badge.svg)](https://github.com/Dans-Vsa/huekit/actions/workflows/ci.yml)
+
 A small, fast color toolkit that runs entirely in your browser: check WCAG contrast, build palettes, extract colors from images and export design tokens.
 
 ## Features
@@ -13,7 +15,8 @@ A small, fast color toolkit that runs entirely in your browser: check WCAG contr
 - [x] Image palette extractor (canvas + k-means, 2-10 colors with their share of the image)
 - [x] Export shade scales and image palettes as CSS variables, Tailwind config or JSON
 - [x] Saved palettes, stored in your browser's `localStorage`
-- [ ] Accessibility polish, CI, v1.0.0
+- [x] Accessibility: skip link, 3:1 control borders, focus kept after deleting a palette
+- [x] CI on Node 22 and 24 (lint, tests, build)
 
 ## Using it
 
@@ -26,6 +29,8 @@ A small, fast color toolkit that runs entirely in your browser: check WCAG contr
 React 19, TypeScript, Vite, Vitest + Testing Library, oxlint. No backend, no tracking.
 
 ## Getting started
+
+Requires Node 22 or newer. Release notes are in [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
 npm install
@@ -49,6 +54,7 @@ src/
   hooks/                # useCopy, useSavedPalettes
   components/           # ContrastChecker, PaletteGenerator, ImageExtractor, ExportPanel, ...
   App.tsx, index.css
+  theme.test.ts         # checks the UI colors against WCAG
 ```
 
 ## License
