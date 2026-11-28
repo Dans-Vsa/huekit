@@ -60,7 +60,7 @@ export function ExportPanel({ colors, defaultName, onSave }: Props) {
           </select>
         </div>
       </div>
-      <pre className="code" tabIndex={0} aria-label={`${formatName} code`}>
+      <pre className="code" role="region" tabIndex={0} aria-label={`${formatName} code`}>
         <code>{code}</code>
       </pre>
       <div className="actions">
